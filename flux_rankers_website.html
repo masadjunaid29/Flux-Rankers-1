@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Rankers | Top #1 SEO & Marketing Agency</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                            950: '#2e1065',
+                        },
+                        darkBg: '#0b0a16',
+                        cardBg: '#131127',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 15s linear infinite',
+                        'bounce-subtle': 'bounceSubtle 3s infinite ease-in-out',
+                        'pulse-glow': 'pulseGlow 2.5s infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(-3%)' },
+                            '50%': { transform: 'translateY(3%)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(124, 58, 237, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(168, 85, 247, 0.8)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-10px) rotate(2deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Embedded Styles -->
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0a16;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Gradient Glow Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #c4b5fd 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #fef08a 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Dynamic Glassmorphism */
+        .glass-card {
+            background: rgba(19, 17, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(139, 92, 246, 0.18);
+        }
+
+        .glass-nav {
+            background: rgba(11, 10, 22, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hover Card Glow Effects */
+        .hover-glow {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-glow:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(168, 85, 247, 0.6);
+            box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Splash Screen Progress Bar */
+        @keyframes fillProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .animate-progress {
+            animation: fillProgress 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0a16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6d28d9;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+
+        /* Hide scrollbar for carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Circular Rotating Text */
+        .rotating-text-svg {
+            animation: spin 20s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 relative selection:bg-purple-600 selection:text-white">
+
+    <!-- 1. SPLASH SCREEN OVERLAY -->
+    <div id="splash-screen" class="fixed inset-0 z-[100] bg-[#070611] flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="relative flex flex-col items-center max-w-md px-6 text-center">
+            <!-- Pulsing Background Orb -->
+            <div class="absolute -top-20 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+
+            <!-- Logo & Icon -->
+            <div class="relative mb-6 flex items-center gap-3">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/30 animate-bounce-subtle">
+                    <i class="fa-solid fa-atom text-3xl text-white"></i>
+                </div>
+                <span class="text-4xl font-extrabold tracking-wider text-white">
+                    FLUX <span class="text-gradient">RANKERS</span>
+                </span>
+            </div>
+
+            <!-- Animated Subheadline -->
+            <p class="text-gray-400 text-sm md:text-base tracking-widest uppercase mb-8 font-medium animate-pulse">
+                Propelling Brands into the Digital Orbit
+            </p>
+
+            <!-- Loading Progress Container -->
+            <div class="w-full bg-gray-800/80 rounded-full h-2 overflow-hidden p-0.5 border border-purple-900/50 relative shadow-inner">
+                <div id="splash-progress-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full rounded-full animate-progress"></div>
+            </div>
+
+            <!-- Loading Status Indicator -->
+            <div class="flex justify-between w-full mt-3 text-xs text-purple-300 font-mono">
+                <span>INITIALIZING ORBIT...</span>
+                <span id="splash-counter">100%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. TOP ANNOUNCEMENT BANNER -->
+    <div id="announcement-banner" class="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-800 text-white text-xs md:text-sm py-2.5 px-4 relative border-b border-purple-700/40 z-40">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 overflow-hidden">
+                <span class="bg-purple-500 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full animate-pulse flex-shrink-0">
+                    LIMITED OFFER
+                </span>
+                <p class="truncate font-medium">
+                    We are offering <strong class="text-purple-200 underline decoration-purple-400 decoration-2">30% off</strong> all new sign-ups and custom services. Valid through Friday!
+                </p>
+            </div>
+            <button onclick="dismissBanner()" class="text-gray-300 hover:text-white p-1 transition-colors flex-shrink-0" title="Close announcement">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 3. NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 via-indigo-600 to-purple-800 flex items-center justify-center shadow-md shadow-purple-900/50 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-atom text-xl text-white group-hover:rotate-180 transition-transform duration-700"></i>
+                    </div>
+                    <span class="text-2xl font-extrabold tracking-tight text-white">
+                        FLUX <span class="text-gradient">RANKERS</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-semibold text-gray-200 hover:text-purple-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-500 hover:after:w-full after:transition-all">Home</a>
+                    <a href="#about" class="text-sm font-semibold text-gray-300 hover:text-purple-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-500 hover:after:w-full after:transition-all">About Us</a>
+
+                    <!-- Services Dropdown -->
+                    <div class="relative group py-1">
+                        <a href="#services" class="text-sm font-semibold text-gray-300 hover:text-purple-400 transition-colors flex items-center gap-1.5">
+                            Services <i class="fa-solid fa-chevron-down text-xs group-hover:rotate-180 transition-transform duration-300"></i>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-60">
+                            <div class="glass-card rounded-2xl p-2 shadow-2xl border border-purple-500/20">
+                                <a href="#services" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-purple-600/20 text-xs font-semibold text-gray-200 hover:text-white transition-all">
+                                    <i class="fa-solid fa-code text-purple-400"></i> Custom Development
+                                </a>
+                                <a href="#services" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-purple-600/20 text-xs font-semibold text-gray-200 hover:text-white transition-all">
+                                    <i class="fa-solid fa-photo-film text-purple-400"></i> Video & Animation
+                                </a>
+                                <a href="#services" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-purple-600/20 text-xs font-semibold text-gray-200 hover:text-white transition-all">
+                                    <i class="fa-solid fa-chart-line text-purple-400"></i> Digital Marketing & SEO
+                                </a>
+                                <a href="#process" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-purple-600/20 text-xs font-semibold text-gray-200 hover:text-white transition-all">
+                                    <i class="fa-solid fa-diagram-project text-purple-400"></i> Our Work Strategy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#testimonials" class="text-sm font-semibold text-gray-300 hover:text-purple-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-500 hover:after:w-full after:transition-all">Blogs</a>
+                    <a href="#contact" class="text-sm font-semibold text-gray-300 hover:text-purple-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-500 hover:after:w-full after:transition-all">Contact Us</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="tel:5592209996" class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-purple-950/80 border border-purple-600/30 text-purple-200 text-sm font-bold hover:bg-purple-900/60 transition-all shadow-md group">
+                        <span class="w-8 h-8 rounded-lg bg-purple-600/30 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone text-xs"></i>
+                        </span>
+                        (559) 220-9996
+                    </a>
+                    <a href="#proposal" class="relative group overflow-hidden rounded-xl p-px font-semibold text-sm">
+                        <span class="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-xl"></span>
+                        <span class="relative px-5 py-2.5 rounded-[11px] bg-darkBg flex items-center gap-2 group-hover:bg-transparent transition-all duration-300 text-white font-bold">
+                            Free Proposal <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Toggle Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-purple-900/40">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-purple-800/30 px-4 pt-4 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-200 hover:bg-purple-600/20">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-200 hover:bg-purple-600/20">About Us</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-200 hover:bg-purple-600/20">Services</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-200 hover:bg-purple-600/20">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-semibold text-gray-200 hover:bg-purple-600/20">Contact Us</a>
+            <div class="pt-2 border-t border-purple-800/30 flex flex-col gap-2">
+                <a href="tel:5592209996" class="flex items-center justify-center gap-2 py-3 bg-purple-900/40 rounded-xl text-purple-300 font-bold">
+                    <i class="fa-solid fa-phone"></i> (559) 220-9996
+                </a>
+                <a href="#proposal" onclick="toggleMobileMenu()" class="text-center py-3 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl text-white font-bold">
+                    Get Free Proposal
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 4. HERO SECTION -->
+    <section id="home" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+        <!-- Background Lighting Orbs -->
+        <div class="absolute top-10 left-1/4 w-96 h-96 bg-purple-700/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Column - Text & Interactive Proposal Bar -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left reveal">
+                    <!-- Pill Tag -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border border-purple-500/30 shadow-lg shadow-purple-900/20">
+                        <span class="flex h-2.5 w-2.5 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
+                        </span>
+                        <span class="text-xs md:text-sm font-bold tracking-wide text-purple-300 uppercase">
+                            Top #1 SEO & Digital Marketing Agency
+                        </span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
+                        IT Solutions That Keep Your Business <span class="text-gradient">Orbiting Towards Success</span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                        Welcome to <strong class="text-white">Flux Rankers</strong>, your trusted partner in innovative IT solutions. We specialize in delivering effective, data-driven digital strategies tailored to help your brand grow exponentially and outperform competitors.
+                    </p>
+
+                    <!-- Interactive Proposal Input Bar -->
+                    <div id="proposal" class="pt-2">
+                        <div class="p-2 sm:p-2.5 glass-card rounded-2xl sm:rounded-full border border-purple-500/40 shadow-2xl max-w-xl mx-auto lg:mx-0 flex flex-col sm:flex-row items-center gap-2">
+                            <div class="flex items-center gap-3 px-4 py-2 w-full sm:w-auto flex-grow">
+                                <i class="fa-solid fa-globe text-purple-400 text-lg"></i>
+                                <input type="url" id="website-url" placeholder="Enter your website domain (e.g. example.com)" class="bg-transparent border-none outline-none text-white placeholder-gray-400 text-sm w-full font-medium focus:ring-0">
+                            </div>
+                            <button onclick="submitProposalHero()" class="w-full sm:w-auto px-6 py-3.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm rounded-xl sm:rounded-full shadow-lg shadow-purple-600/40 hover:shadow-purple-500/60 transition-all flex items-center justify-center gap-2 group whitespace-nowrap">
+                                <span>Send Me a Proposal!</span>
+                                <i class="fa-solid fa-paper-plane text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2.5 flex items-center justify-center lg:justify-start gap-1.5">
+                            <i class="fa-solid fa-circle-check text-purple-400"></i> Get a free comprehensive SEO audit report within 24 hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Animated Visual Graphics & Live Counter -->
+                <div class="lg:col-span-5 relative flex justify-center items-center reveal">
+                    <!-- Central Orb Graphics Frame -->
+                    <div class="relative w-full max-w-md aspect-square">
+                        <!-- Orbit Rings -->
+                        <div class="absolute inset-0 rounded-full border border-purple-500/20 animate-spin-slow"></div>
+                        <div class="absolute inset-6 rounded-full border border-dashed border-indigo-500/30 animate-spin-slow" style="animation-direction: reverse; animation-duration: 25s;"></div>
+                        
+                        <!-- Core Card Visual -->
+                        <div class="absolute inset-12 glass-card rounded-3xl p-6 flex flex-col justify-between shadow-2xl border border-purple-500/30 overflow-hidden group">
+                            <!-- Background Grid Overlay -->
+                            <div class="absolute inset-0 bg-[radial-gradient(#8b5cf6_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+
+                            <div class="relative z-10 flex justify-between items-center">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-[10px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded-full border border-purple-800">
+                                    LIVE ANALYTICS
+                                </span>
+                            </div>
+
+                            <!-- Live Counter Animated Card -->
+                            <div class="relative z-10 my-auto text-center py-4">
+                                <p class="text-xs text-gray-400 font-semibold uppercase tracking-wider mb-1">Organic Impressions Driven</p>
+                                <div class="text-3xl sm:text-4xl font-extrabold text-gradient tracking-tight font-mono" id="hero-counter">
+                                    4,532,234
+                                </div>
+                                <div class="mt-3 flex items-center justify-center gap-2 text-xs text-green-400 font-bold bg-green-950/40 py-1 px-3 rounded-full border border-green-500/30 w-max mx-auto">
+                                    <i class="fa-solid fa-arrow-trend-up"></i> +28.4% this month
+                                </div>
+                            </div>
+
+                            <!-- Interactive Chart Bars Graphic -->
+                            <div class="relative z-10 flex items-end justify-between gap-2 h-20 pt-2 border-t border-purple-900/50">
+                                <div class="bg-purple-600/40 rounded-t w-full h-[40%] group-hover:h-[60%] transition-all duration-500"></div>
+                                <div class="bg-purple-600/60 rounded-t w-full h-[65%] group-hover:h-[80%] transition-all duration-500"></div>
+                                <div class="bg-indigo-500/70 rounded-t w-full h-[50%] group-hover:h-[70%] transition-all duration-500"></div>
+                                <div class="bg-purple-500 rounded-t w-full h-[85%] group-hover:h-[95%] transition-all duration-500"></div>
+                                <div class="bg-pink-500 rounded-t w-full h-[100%] transition-all duration-500"></div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro Badge 1 - Target Icon -->
+                        <div class="absolute -top-4 -right-2 glass-card p-3 rounded-2xl flex items-center gap-3 shadow-xl border border-purple-400/30 animate-float">
+                            <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-bullseye text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white">99.4% Accuracy</p>
+                                <p class="text-[10px] text-gray-400">SEO Targeting</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Micro Badge 2 - Megaphone Icon -->
+                        <div class="absolute -bottom-6 -left-4 glass-card p-3 rounded-2xl flex items-center gap-3 shadow-xl border border-indigo-400/30 animate-float" style="animation-delay: 2s;">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white">
+                                <i class="fa-solid fa-bullhorn text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white">10x Campaign ROI</p>
+                                <p class="text-[10px] text-gray-400">Flux SEM Engine</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. REAL RESULTS & MARKETING PARTNERS TICKER SECTION -->
+    <section class="py-10 bg-purple-950/20 border-y border-purple-900/30 overflow-hidden relative">
+        <!-- Testimonials Marquee Ticker -->
+        <div class="flex overflow-hidden relative select-none">
+            <div class="flex items-center gap-8 animate-marquee whitespace-nowrap">
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Our ROI improved significantly thanks to Flux Rankers' expertise!"</span>
+                    <span class="text-xs text-purple-400 font-bold">— Growth Manager</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Flux Rankers' expertise boosted our online presence by 300%."</span>
+                    <span class="text-xs text-purple-400 font-bold">— E-Commerce Lead</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Flawless website overhaul and top keyword rankings."</span>
+                    <span class="text-xs text-purple-400 font-bold">— CEO, TechLabs</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"The best digital marketing investment we've made to date."</span>
+                    <span class="text-xs text-purple-400 font-bold">— Marketing VP</span>
+                </div>
+            </div>
+            <!-- Duplicate for infinite seamless scrolling -->
+            <div class="flex items-center gap-8 animate-marquee whitespace-nowrap" aria-hidden="true">
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Our ROI improved significantly thanks to Flux Rankers' expertise!"</span>
+                    <span class="text-xs text-purple-400 font-bold">— Growth Manager</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Flux Rankers' expertise boosted our online presence by 300%."</span>
+                    <span class="text-xs text-purple-400 font-bold">— E-Commerce Lead</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"Flawless website overhaul and top keyword rankings."</span>
+                    <span class="text-xs text-purple-400 font-bold">— CEO, TechLabs</span>
+                </div>
+                <div class="flex items-center gap-3 glass-card px-6 py-3 rounded-2xl border border-purple-500/20">
+                    <span class="flex text-yellow-400 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span class="text-sm font-semibold text-gray-200">"The best digital marketing investment we've made to date."</span>
+                    <span class="text-xs text-purple-400 font-bold">— Marketing VP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing Partners Banner -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <p class="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">
+                Proud to partner with industry leaders
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8 items-center justify-center">
+                <!-- Facebook Partner Badge -->
+                <div class="glass-card p-4 rounded-2xl border border-purple-800/30 hover:border-purple-500/60 flex items-center justify-center gap-3 hover:scale-105 transition-all group cursor-pointer">
+                    <i class="fa-brands fa-facebook text-3xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Meta Preferred</p>
+                        <p class="text-sm font-extrabold text-white">Marketing Partner</p>
+                    </div>
+                </div>
+
+                <!-- LinkedIn Partner Badge -->
+                <div class="glass-card p-4 rounded-2xl border border-purple-800/30 hover:border-purple-500/60 flex items-center justify-center gap-3 hover:scale-105 transition-all group cursor-pointer">
+                    <i class="fa-brands fa-linkedin text-3xl text-sky-500 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">LinkedIn Certified</p>
+                        <p class="text-sm font-extrabold text-white">Marketing Solutions</p>
+                    </div>
+                </div>
+
+                <!-- Shopify Partner Badge -->
+                <div class="glass-card p-4 rounded-2xl border border-purple-800/30 hover:border-purple-500/60 flex items-center justify-center gap-3 hover:scale-105 transition-all group cursor-pointer col-span-2 md:col-span-1">
+                    <i class="fa-brands fa-shopify text-3xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-400">Official</p>
+                        <p class="text-sm font-extrabold text-white">Shopify Partners</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ABOUT US SECTION -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Visual Composition with Circular Badge -->
+                <div class="lg:col-span-5 relative flex justify-center reveal">
+                    <div class="relative w-full max-w-md">
+                        <!-- Background Frame Decoration -->
+                        <div class="absolute -inset-2 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-3xl blur-xl opacity-30"></div>
+                        
+                        <!-- Main Visual Image Card -->
+                        <div class="relative glass-card rounded-3xl overflow-hidden border border-purple-500/30 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Flux Rankers Agency Team" class="w-full h-80 object-cover hover:scale-105 transition-transform duration-700">
+                            <div class="p-6 bg-cardBg">
+                                <p class="text-xs text-purple-400 font-bold uppercase tracking-wider mb-1">Empowering Businesses Globally</p>
+                                <h4 class="text-lg font-bold text-white">Innovative Digital Growth Framework</h4>
+                            </div>
+                        </div>
+
+                        <!-- Rotating Circular Badge -->
+                        <div class="absolute -bottom-8 -right-6 w-32 h-32 rounded-full glass-card border border-purple-400/40 p-2 shadow-2xl flex items-center justify-center bg-darkBg/90">
+                            <svg class="w-full h-full rotating-text-svg" viewBox="0 0 100 100">
+                                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                                <text class="text-[9.5px] font-bold fill-purple-300 uppercase tracking-widest">
+                                    <textPath xlink:href="#circlePath">
+                                        FLUX RANKERS • A SUCCESS WITH BRAND •
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="absolute w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white shadow-md">
+                                <i class="fa-solid fa-rocket text-sm"></i>
+                            </div>
+                        </div>
+
+                        <!-- Floating Sparkle Icon -->
+                        <div class="absolute -top-6 -left-6 w-12 h-12 bg-purple-600/30 rounded-2xl backdrop-blur-md flex items-center justify-center border border-purple-400/30 animate-pulse">
+                            <i class="fa-solid fa-sparkles text-yellow-400 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Text Content -->
+                <div class="lg:col-span-7 space-y-6 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-award"></i> About Flux Rankers
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                        Driving Business Growth with <span class="text-gradient">Professional SEO & SEM Solutions</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-base leading-relaxed">
+                        At <strong class="text-white">Flux Rankers</strong>, we combine cutting-edge technology, analytical precision, and creative brilliance to scale your digital presence. Whether you need custom web applications, top-tier search engine placement, or high-converting digital ad campaigns, our team ensures your brand orbits ahead of the curve.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 py-2">
+                        <div class="glass-card p-4 rounded-2xl border border-purple-800/30">
+                            <div class="text-2xl font-black text-purple-400 font-mono">500+</div>
+                            <div class="text-xs text-gray-400 font-medium">Successful Projects</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-purple-800/30">
+                            <div class="text-2xl font-black text-purple-400 font-mono">98.9%</div>
+                            <div class="text-xs text-gray-400 font-medium">Client Retention Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#services" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm shadow-lg shadow-purple-600/30 transition-all group">
+                            <span>Learn More About Us</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SERVICES SECTION WITH INTERACTIVE CAROUSEL -->
+    <section id="services" class="py-20 bg-cardBg/40 border-y border-purple-900/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-cubes"></i> Services
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+                        Unlock Your Potential <span class="text-gradient">With Our Services</span>
+                    </h2>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="flex items-center gap-3">
+                    <button onclick="scrollServices(-1)" class="w-12 h-12 rounded-full glass-card border border-purple-500/30 text-white hover:bg-purple-600/30 flex items-center justify-center transition-all shadow-md active:scale-95" title="Previous Service">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button onclick="scrollServices(1)" class="w-12 h-12 rounded-full glass-card border border-purple-500/30 text-white hover:bg-purple-600/30 flex items-center justify-center transition-all shadow-md active:scale-95" title="Next Service">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Services Cards Scrollable Container -->
+            <div id="services-container" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+                
+                <!-- Service Card 1: Custom Development -->
+                <div class="min-w-[300px] sm:min-w-[360px] glass-card rounded-3xl p-8 border border-purple-500/20 hover-glow flex flex-col justify-between flex-shrink-0 group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Custom Development</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Tailor-made CRM solutions, web applications, dynamic enterprise platforms, and mobile apps engineered for speed, security, and effortless scalability.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Full-Stack Web Development</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Custom CRM & Portal Solutions</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> iOS & Android Mobile Applications</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                        Explore Solution <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2: Video & Animation -->
+                <div class="min-w-[300px] sm:min-w-[360px] glass-card rounded-3xl p-8 border border-purple-500/20 hover-glow flex flex-col justify-between flex-shrink-0 group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-pink-600 flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-indigo-600/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Video & Animation</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Crafting visually captivating brand videos, 2D/3D motion graphics, explainer animations, and high-converting video ad creative to bring your story to life.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Motion Graphics & VFX</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Product Explainer Videos</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Social Media Video Ads</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                        Explore Solution <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 3: Digital Marketing & SEO -->
+                <div class="min-w-[300px] sm:min-w-[360px] glass-card rounded-3xl p-8 border border-purple-500/20 hover-glow flex flex-col justify-between flex-shrink-0 group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Digital Marketing & SEO</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Dominate search rankings and amplify conversion channels with performance SEO, targeted PPC ad strategies, content marketing, and social media management.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> On-Page & Technical SEO</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Paid Search & Social Ads (SEM)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Content & Email Marketing</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                        Explore Solution <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 4: E-Commerce Growth -->
+                <div class="min-w-[300px] sm:min-w-[360px] glass-card rounded-3xl p-8 border border-purple-500/20 hover-glow flex flex-col justify-between flex-shrink-0 group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white text-2xl mb-6 shadow-lg shadow-emerald-600/30 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">E-Commerce Optimization</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Transform online storefronts into conversion powerhouses through Shopify custom design, checkout funnel optimization, and automated retargeting.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 mb-6 text-xs text-gray-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Shopify Store Setup & Redesign</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Conversion Rate Optimization (CRO)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Amazon & Multi-channel Ads</li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-sm font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                        Explore Solution <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. OUR PROCESS SECTION -->
+    <section id="process" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-diagram-project"></i> Our Process
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+                    A Clear Process <span class="text-gradient">For Your Business</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base mt-4">
+                    Our structured four-step digital framework delivers seamless execution from initial discovery to measurable campaign success.
+                </p>
+            </div>
+
+            <!-- 4 Step Process Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                
+                <!-- Step 1 -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 relative hover-glow group">
+                    <div class="text-4xl font-black text-purple-600/30 absolute top-4 right-6 font-mono group-hover:text-purple-500/50 transition-colors">01</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-600/30 text-purple-300 flex items-center justify-center text-xl mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-chess-knight"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Project Strategy</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Defining clear goals, competitor analysis, keyword research, and custom digital roadmaps for maximum market impact.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 relative hover-glow group">
+                    <div class="text-4xl font-black text-purple-600/30 absolute top-4 right-6 font-mono group-hover:text-purple-500/50 transition-colors">02</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-600/30 text-purple-300 flex items-center justify-center text-xl mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Working On It</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Implementing tailored technical solutions, content architecture, creative designs, and campaign setups with precision.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 relative hover-glow group">
+                    <div class="text-4xl font-black text-purple-600/30 absolute top-4 right-6 font-mono group-hover:text-purple-500/50 transition-colors">03</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-600/30 text-purple-300 flex items-center justify-center text-xl mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-vial-circle-check"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Testing & QA</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Ensuring flawless performance, speed optimization, conversion tracking setup, and multi-device usability testing.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 relative hover-glow group">
+                    <div class="text-4xl font-black text-purple-600/30 absolute top-4 right-6 font-mono group-hover:text-purple-500/50 transition-colors">04</div>
+                    <div class="w-12 h-12 rounded-xl bg-purple-600/30 text-purple-300 flex items-center justify-center text-xl mb-4 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Delivering Results</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Deploying campaigns live, providing transparent live analytics dashboards, and delivering ongoing optimization.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Embedded Quick Call-To-Action Submission Bar -->
+            <div class="mt-12 glass-card p-6 rounded-3xl border border-purple-500/30 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 reveal">
+                <div class="text-left">
+                    <h4 class="text-lg font-bold text-white">Ready to accelerate your revenue pipeline?</h4>
+                    <p class="text-xs text-gray-400">Speak directly with our senior strategy consultant today.</p>
+                </div>
+                <a href="tel:5592209996" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xs rounded-xl shadow-lg hover:shadow-purple-500/40 transition-all flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-solid fa-phone"></i> Call (559) 220-9996
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 9. WHY CHOOSE US SECTION -->
+    <section class="py-20 bg-cardBg/40 border-t border-purple-900/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column - Mission / Vision Interactive Accordion -->
+                <div class="lg:col-span-6 space-y-6 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-shield-halved"></i> Why Flux Rankers
+                    </div>
+
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Excellence in Every Step – <span class="text-gradient">Choose Us for Success</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        We don't just execute campaigns; we build long-term value. Our dedicated engineers and SEO strategists bring unmatched transparency and proven methodology to every partnership.
+                    </p>
+
+                    <!-- Interactive Mission & Vision Accordion Cards -->
+                    <div class="space-y-4 pt-2">
+                        <!-- Accordion Card 1: Our Mission -->
+                        <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                            <button onclick="toggleAccordion('acc-mission')" class="w-full px-6 py-4 text-left flex justify-between items-center bg-purple-950/30 hover:bg-purple-900/40 transition-colors">
+                                <span class="font-bold text-white text-base flex items-center gap-3">
+                                    <i class="fa-solid fa-compass text-purple-400"></i> Our Mission: Elevating You with Expert IT Solutions
+                                </span>
+                                <i id="acc-mission-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc-mission" class="px-6 py-4 text-xs text-gray-300 leading-relaxed hidden border-t border-purple-900/40">
+                                To empower brands of all sizes with data-backed digital marketing strategies, bespoke web architecture, and organic search superiority, propelling them into long-term market leadership.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Card 2: Our Vision -->
+                        <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                            <button onclick="toggleAccordion('acc-vision')" class="w-full px-6 py-4 text-left flex justify-between items-center bg-purple-950/30 hover:bg-purple-900/40 transition-colors">
+                                <span class="font-bold text-white text-base flex items-center gap-3">
+                                    <i class="fa-solid fa-eye text-purple-400"></i> Our Vision: Shaping Future with Advanced Strategies
+                                </span>
+                                <i id="acc-vision-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                            </button>
+                            <div id="acc-vision" class="px-6 py-4 text-xs text-gray-300 leading-relaxed hidden border-t border-purple-900/40">
+                                To become the global benchmark for digital performance agencies, recognized for innovative technological integration, ethical client growth, and transformative creative execution.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Visual Team Image Representation -->
+                <div class="lg:col-span-6 reveal">
+                    <div class="relative rounded-3xl overflow-hidden glass-card border border-purple-500/30 p-2 shadow-2xl group">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80" alt="Flux Rankers Strategy Session" class="w-full h-96 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute bottom-6 left-6 right-6 glass-card p-4 rounded-xl border border-purple-400/30 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs font-bold text-white">Dedicated Account Managers</p>
+                                <p class="text-[10px] text-gray-300">24/7 Strategic Support & Transparent Reporting</p>
+                            </div>
+                            <span class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-xs">
+                                100%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. TESTIMONIALS SECTION -->
+    <section id="testimonials" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-star"></i> Testimonials
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
+                    What Our Clients <span class="text-gradient">Say About Flux Rankers</span>
+                </h2>
+                <p class="text-gray-400 text-sm mt-3">Read authentic reviews from business owners who transformed their growth with us.</p>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+                
+                <!-- Review 1: Lou flo -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 hover-glow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <i class="fa-brands fa-google text-lg text-gray-400"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed italic mb-6">
+                            "I had my website designed with Steven, he did an amazing job with it! The site looks great, definitely recommend Flux Rankers for anyone wanting high conversion web design."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-purple-900/40">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center font-bold text-white text-sm">
+                            LF
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Lou Flo</h4>
+                            <p class="text-[10px] text-gray-400">Verified Client</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Austin Long -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 hover-glow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <i class="fa-brands fa-google text-lg text-gray-400"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed italic mb-6">
+                            "I've been using Flux Rankers for online marketing services and they have been great! Communication is seamless and our organic call volume doubled within 90 days."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-purple-900/40">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-500 flex items-center justify-center font-bold text-white text-sm">
+                            AL
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Austin Long</h4>
+                            <p class="text-[10px] text-gray-400">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Jamin -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 hover-glow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <i class="fa-brands fa-google text-lg text-gray-400"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed italic mb-6">
+                            "I'm glad I gave these guys a chance because so far I've seen nothing but good things! Transparent dashboards and real ROI."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-purple-900/40">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-purple-500 flex items-center justify-center font-bold text-white text-sm">
+                            J
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Jamin</h4>
+                            <p class="text-[10px] text-gray-400">E-Commerce Director</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4: Seth Glazer -->
+                <div class="glass-card rounded-3xl p-6 border border-purple-800/30 hover-glow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <i class="fa-brands fa-google text-lg text-gray-400"></i>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed italic mb-6">
+                            "Fantastic job on completely revamping my website and improving my online presence! Highly responsive and extremely skilled team."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-purple-900/40">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center font-bold text-white text-sm">
+                            SG
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Seth Glazer</h4>
+                            <p class="text-[10px] text-gray-400">Managing Partner</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FAQ SECTION -->
+    <section class="py-20 bg-cardBg/40 border-t border-purple-900/30 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12 reveal">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider mb-3">
+                    <i class="fa-solid fa-circle-question"></i> FAQs
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    Frequently Asked <span class="text-gradient">Questions</span>
+                </h2>
+                <p class="text-gray-400 text-sm mt-2">Find quick answers regarding our digital solutions and strategic collaboration.</p>
+            </div>
+
+            <!-- FAQ Accordions -->
+            <div class="space-y-4 reveal">
+                
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                    <button onclick="toggleAccordion('faq-1')" class="w-full px-6 py-5 text-left flex justify-between items-center bg-purple-950/20 hover:bg-purple-900/30 transition-colors">
+                        <span class="font-bold text-white text-sm sm:text-base">How Do You Customize Solutions for Clients?</span>
+                        <i id="faq-1-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-1" class="px-6 py-4 text-xs sm:text-sm text-gray-300 leading-relaxed hidden border-t border-purple-900/40 bg-darkBg/50">
+                        We begin every relationship with an in-depth digital audit of your current website, competitors, target audience, and keyword landscape. Based on these analytical insights, Flux Rankers builds a bespoke growth plan tailored specifically to your revenue targets.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                    <button onclick="toggleAccordion('faq-2')" class="w-full px-6 py-5 text-left flex justify-between items-center bg-purple-950/20 hover:bg-purple-900/30 transition-colors">
+                        <span class="font-bold text-white text-sm sm:text-base">Can You Handle Large-Scale Projects?</span>
+                        <i id="faq-2-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-2" class="px-6 py-4 text-xs sm:text-sm text-gray-300 leading-relaxed hidden border-t border-purple-900/40 bg-darkBg/50">
+                        Yes! Our team of full-stack developers and enterprise digital marketing strategists routinely handles enterprise web applications, high-volume e-commerce stores, and multi-location SEO campaigns across nationwide target markets.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                    <button onclick="toggleAccordion('faq-3')" class="w-full px-6 py-5 text-left flex justify-between items-center bg-purple-950/20 hover:bg-purple-900/30 transition-colors">
+                        <span class="font-bold text-white text-sm sm:text-base">Do You Provide Ongoing Support After Project Completion?</span>
+                        <i id="faq-3-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-3" class="px-6 py-4 text-xs sm:text-sm text-gray-300 leading-relaxed hidden border-t border-purple-900/40 bg-darkBg/50">
+                        Absolutely. We offer dedicated maintenance packages, continuously updated search algorithm monitoring, continuous AB testing, security updates, and performance optimization retainers to ensure your site stays at top rankings.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                    <button onclick="toggleAccordion('faq-4')" class="w-full px-6 py-5 text-left flex justify-between items-center bg-purple-950/20 hover:bg-purple-900/30 transition-colors">
+                        <span class="font-bold text-white text-sm sm:text-base">How Often Will I Receive Project Updates?</span>
+                        <i id="faq-4-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-4" class="px-6 py-4 text-xs sm:text-sm text-gray-300 leading-relaxed hidden border-t border-purple-900/40 bg-darkBg/50">
+                        You receive weekly progress briefs, bi-weekly strategic calls, and 24/7 access to your custom reporting dashboard where key performance indicators (KPIs), keyword rankings, and ad metrics update in real-time.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="glass-card rounded-2xl border border-purple-800/40 overflow-hidden">
+                    <button onclick="toggleAccordion('faq-5')" class="w-full px-6 py-5 text-left flex justify-between items-center bg-purple-950/20 hover:bg-purple-900/30 transition-colors">
+                        <span class="font-bold text-white text-sm sm:text-base">Can You Share Case Studies or Client Success Stories?</span>
+                        <i id="faq-5-icon" class="fa-solid fa-chevron-down text-purple-400 text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-5" class="px-6 py-4 text-xs sm:text-sm text-gray-300 leading-relaxed hidden border-t border-purple-900/40 bg-darkBg/50">
+                        Yes! Request a free consultation call and our strategists will share verified case studies relevant to your industry vertical, demonstrating keyword growth, conversion rate multipliers, and ROI breakdowns.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. CONTACT & CONSULTATION SECTION -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Info Box & Checklist -->
+                <div class="lg:col-span-5 space-y-8 reveal">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-800 text-purple-300 text-xs font-bold uppercase tracking-wider mb-3">
+                            <i class="fa-solid fa-headset"></i> Get In Touch
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                            Partner with Us for <span class="text-gradient">Comprehensive Services</span>
+                        </h2>
+                        <p class="text-gray-300 text-sm mt-3">
+                            Ready to transform your online presence? Call us directly or fill out the proposal form to get started.
+                        </p>
+                    </div>
+
+                    <!-- Direct Phone Call Card -->
+                    <a href="tel:5592209996" class="glass-card p-6 rounded-2xl border border-purple-500/40 flex items-center gap-4 hover:border-purple-400 transition-all shadow-xl group">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform shadow-lg shadow-purple-600/40">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Call us directly at</p>
+                            <p class="text-xl font-extrabold text-white group-hover:text-purple-300 transition-colors">(559) 220-9996</p>
+                        </div>
+                    </a>
+
+                    <!-- Benefits Checklist -->
+                    <div>
+                        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Why Brands Excel With Us:</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Improved Business ROI</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Monthly Reports</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Affordable Services</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Boosted Engagement</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Tailored Solutions</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Elevated Branding</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Continued Support</div>
+                            <div class="flex items-center gap-2 text-xs text-gray-300"><i class="fa-solid fa-circle-check text-purple-400"></i> Scalable Growth</div>
+                        </div>
+                    </div>
+
+                    <!-- 3 Step Consultation Process -->
+                    <div class="glass-card p-6 rounded-2xl border border-purple-800/30">
+                        <h4 class="text-xs font-bold text-purple-300 uppercase tracking-widest mb-3">Simple 3-Step Onboarding</h4>
+                        <ol class="space-y-2 text-xs text-gray-300 font-medium">
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center font-bold">1</span> Schedule an initial call</li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center font-bold">2</span> Discovery & Audit meeting</li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-purple-600 text-white text-[10px] flex items-center justify-center font-bold">3</span> Receive custom execution proposal</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Contact Form -->
+                <div class="lg:col-span-7 reveal">
+                    <div class="glass-card rounded-3xl p-8 border border-purple-500/30 shadow-2xl relative overflow-hidden">
+                        <h3 class="text-2xl font-bold text-white mb-2">Request Your Free Strategy Proposal</h3>
+                        <p class="text-xs text-gray-400 mb-6">Fill out the details below and a Flux Rankers specialist will get back to you within 2 hours.</p>
+
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">First Name *</label>
+                                    <input type="text" required placeholder="John" class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Last Name *</label>
+                                    <input type="text" required placeholder="Doe" class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Phone Number *</label>
+                                    <input type="tel" required placeholder="(559) 000-0000" class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Email Address *</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Company / Website</label>
+                                    <input type="text" placeholder="https://yourcompany.com" class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Interested Service *</label>
+                                    <select required class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500 transition-colors">
+                                        <option value="">Select Service...</option>
+                                        <option value="seo">SEO & Digital Marketing</option>
+                                        <option value="dev">Custom Web Development</option>
+                                        <option value="video">Video & Animation</option>
+                                        <option value="ecommerce">E-Commerce Optimization</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Your Message / Project Details</label>
+                                <textarea rows="4" placeholder="Tell us about your project goals, timeline, and current bottlenecks..." class="w-full bg-darkBg/80 border border-purple-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm rounded-xl shadow-xl shadow-purple-600/40 hover:shadow-purple-500/60 transition-all flex items-center justify-center gap-2 group">
+                                <span>Submit Proposal Request</span>
+                                <i class="fa-solid fa-paper-plane text-xs group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. FOOTER -->
+    <footer class="bg-[#070611] border-t border-purple-900/40 pt-16 pb-8 text-gray-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-purple-900/30">
+                
+                <!-- Brand Column -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-atom text-xl text-white"></i>
+                        </div>
+                        <span class="text-2xl font-extrabold tracking-tight text-white">
+                            FLUX <span class="text-gradient">RANKERS</span>
+                        </span>
+                    </a>
+                    <p class="text-xs text-gray-400 leading-relaxed max-w-sm">
+                        Flux Rankers is a premier digital marketing and IT engineering agency dedicated to accelerating brand growth through SEO, custom web solutions, and creative campaign execution.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-xl glass-card border border-purple-800/40 flex items-center justify-center text-gray-300 hover:text-white hover:bg-purple-600 transition-colors" title="Facebook"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl glass-card border border-purple-800/40 flex items-center justify-center text-gray-300 hover:text-white hover:bg-purple-600 transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin-in text-xs"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl glass-card border border-purple-800/40 flex items-center justify-center text-gray-300 hover:text-white hover:bg-purple-600 transition-colors" title="Twitter"><i class="fa-brands fa-x-twitter text-xs"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl glass-card border border-purple-800/40 flex items-center justify-center text-gray-300 hover:text-white hover:bg-purple-600 transition-colors" title="Instagram"><i class="fa-brands fa-instagram text-xs"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#home" class="hover:text-purple-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-purple-400 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">Services</a></li>
+                        <li><a href="#process" class="hover:text-purple-400 transition-colors">Our Process</a></li>
+                        <li><a href="#testimonials" class="hover:text-purple-400 transition-colors">Client Reviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Links -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Services</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">Custom Development</a></li>
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">Video & Animation</a></li>
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">Digital Marketing & SEO</a></li>
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">Shopify E-Commerce</a></li>
+                        <li><a href="#services" class="hover:text-purple-400 transition-colors">PPC Ad Management</a></li>
+                    </ul>
+                </div>
+
+                <!-- Direct Contact Info -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-phone text-purple-400"></i>
+                            <a href="tel:5592209996" class="hover:text-white transition-colors">(559) 220-9996</a>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-envelope text-purple-400"></i>
+                            <span>contact@fluxrankers.com</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-clock text-purple-400"></i>
+                            <span>Mon - Fri: 8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 Flux Rankers. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-gray-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-gray-400 transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 14. FLOATING AI CHAT WIDGET & SCROLL TO TOP -->
+    
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top-btn" onclick="scrollToTop()" class="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full glass-card border border-purple-500/40 text-purple-300 hover:text-white hover:bg-purple-600 flex items-center justify-center shadow-2xl opacity-0 transition-all duration-300 translate-y-4" title="Back to top">
+        <i class="fa-solid fa-arrow-up text-base"></i>
+    </button>
+
+    <!-- Floating AI Widget Trigger -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Popover Window -->
+        <div id="ai-chat-window" class="hidden glass-card w-80 sm:w-96 rounded-3xl border border-purple-500/40 shadow-2xl overflow-hidden mb-4 transition-all duration-300">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4 border-b border-purple-700/40 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-purple-500 flex items-center justify-center text-white text-xs shadow-md">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">Flux AI Assistant</h4>
+                        <p class="text-[10px] text-green-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> Online • Instant Answers
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleAiChat()" class="text-gray-300 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages Log -->
+            <div id="chat-messages" class="p-4 h-64 overflow-y-auto space-y-3 text-xs">
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-lg bg-purple-600 flex items-center justify-center text-white text-[10px] flex-shrink-0 mt-0.5">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-purple-950/80 p-3 rounded-2xl border border-purple-800/40 text-gray-200">
+                        Hello! Welcome to <strong>Flux Rankers</strong>. How can I help boost your digital search rankings today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Quick Actions / Input Bar -->
+            <div class="p-3 bg-darkBg/90 border-t border-purple-900/40 space-y-2">
+                <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 text-[10px]">
+                    <button onclick="sendQuickChat('What services do you offer?')" class="px-2.5 py-1 rounded-full bg-purple-900/50 hover:bg-purple-800 text-purple-300 whitespace-nowrap border border-purple-700/30">Our Services</button>
+                    <button onclick="sendQuickChat('How can I contact sales?')" class="px-2.5 py-1 rounded-full bg-purple-900/50 hover:bg-purple-800 text-purple-300 whitespace-nowrap border border-purple-700/30">Contact Sales</button>
+                    <button onclick="sendQuickChat('Where are you located?')" class="px-2.5 py-1 rounded-full bg-purple-900/50 hover:bg-purple-800 text-purple-300 whitespace-nowrap border border-purple-700/30">Location</button>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="chat-input" onkeypress="handleChatKeyPress(event)" placeholder="Ask Flux AI..." class="w-full bg-darkBg border border-purple-800/50 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
+                    <button onclick="sendChatMessage()" class="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center hover:bg-purple-500 transition-colors flex-shrink-0">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Chat Button -->
+        <button onclick="toggleAiChat()" class="px-4 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white font-bold text-xs shadow-2xl hover:scale-105 transition-all flex items-center gap-2.5 border border-purple-400/30 group">
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <i class="fa-solid fa-robot text-sm group-hover:rotate-12 transition-transform"></i>
+            <span>Talk to Flux AI</span>
+        </button>
+    </div>
+
+    <!-- Toast Notification Box -->
+    <div id="toast-msg" class="fixed top-24 right-6 z-50 glass-card border border-purple-500/50 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-x-full transition-transform duration-300 pointer-events-none">
+        <div class="w-8 h-8 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <p id="toast-title" class="text-xs font-bold text-white">Action Completed!</p>
+            <p id="toast-body" class="text-[11px] text-gray-300">Your proposal request has been received.</p>
+        </div>
+    </div>
+
+    <!-- 15. INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        window.onload = function() {
+            // Dismiss Splash Screen after progress completes
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => {
+                        splash.style.display = 'none';
+                    }, 700);
+                }
+            }, 1900);
+
+            // Animate Counter Logic in Hero
+            animateHeroCounter();
+            
+            // Setup Intersection Observer for Scroll Reveal
+            setupScrollObserver();
+        };
+
+        // Scroll Reveal Observer Logic
+        function setupScrollObserver() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Announcement Banner Dismiss
+        function dismissBanner() {
+            const banner = document.getElementById('announcement-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+
+        // Mobile Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        // Services Carousel Scroll
+        function scrollServices(direction) {
+            const container = document.getElementById('services-container');
+            if (container) {
+                const scrollAmount = 380;
+                container.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Generic Accordion Toggle Logic
+        function toggleAccordion(id) {
+            const target = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+            if (target) {
+                if (target.classList.contains('hidden')) {
+                    target.classList.remove('hidden');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                } else {
+                    target.classList.add('hidden');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+
+        // Hero Counter Animation
+        function animateHeroCounter() {
+            const el = document.getElementById('hero-counter');
+            if (!el) return;
+            let start = 4500000;
+            let end = 4532234;
+            let duration = 1500;
+            let range = end - start;
+            let current = start;
+            let increment = Math.ceil(range / (duration / 20));
+            
+            let timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                el.innerText = current.toLocaleString();
+            }, 20);
+        }
+
+        // Proposal Hero Submission
+        function submitProposalHero() {
+            const urlInput = document.getElementById('website-url');
+            if (urlInput && urlInput.value.trim() !== '') {
+                showToast("Proposal Request Sent!", "Audit for " + urlInput.value + " will arrive in 24 hours.");
+                urlInput.value = '';
+            } else {
+                showToast("Please Enter Domain", "Please provide a valid website address.");
+            }
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast("Strategy Request Received!", "A Flux Rankers expert will call you shortly.");
+            document.getElementById('contact-form').reset();
+        }
+
+        // Toast Helper Function
+        function showToast(title, body) {
+            const toast = document.getElementById('toast-msg');
+            const toastTitle = document.getElementById('toast-title');
+            const toastBody = document.getElementById('toast-body');
+
+            if (toast && toastTitle && toastBody) {
+                toastTitle.innerText = title;
+                toastBody.innerText = body;
+                toast.classList.remove('translate-x-full');
+
+                setTimeout(() => {
+                    toast.classList.add('translate-x-full');
+                }, 4000);
+            }
+        }
+
+        // Window Scroll Event Handler for Scroll to Top Button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scroll-top-btn');
+            if (btn) {
+                if (window.scrollY > 400) {
+                    btn.classList.remove('opacity-0', 'translate-y-4');
+                    btn.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    btn.classList.add('opacity-0', 'translate-y-4');
+                    btn.classList.remove('opacity-100', 'translate-y-0');
+                }
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Flux AI Chat Logic
+        function toggleAiChat() {
+            const windowEl = document.getElementById('ai-chat-window');
+            if (windowEl) {
+                windowEl.classList.toggle('hidden');
+            }
+        }
+
+        function handleChatKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendQuickChat(text) {
+            const input = document.getElementById('chat-input');
+            if (input) {
+                input.value = text;
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const chatLog = document.getElementById('chat-messages');
+            if (!input || !chatLog || input.value.trim() === '') return;
+
+            const userMsg = input.value.trim();
+            
+            // Append User Message
+            const userMsgDiv = document.createElement('div');
+            userMsgDiv.className = 'flex items-start gap-2 justify-end';
+            userMsgDiv.innerHTML = `
+                <div class="bg-purple-600 p-3 rounded-2xl text-white max-w-[80%]">
+                    ${escapeHtml(userMsg)}
+                </div>
+            `;
+            chatLog.appendChild(userMsgDiv);
+            input.value = '';
+            chatLog.scrollTop = chatLog.scrollHeight;
+
+            // Generate AI Response
+            setTimeout(() => {
+                let reply = "Thanks for asking! You can reach our senior strategy team directly at (559) 220-9996 or fill out our proposal form above.";
+                const lower = userMsg.toLowerCase();
+                
+                if (lower.includes('service')) {
+                    reply = "Flux Rankers offers Custom Development, Video & Animation, SEO, and SEM PPC Management!";
+                } else if (lower.includes('contact') || lower.includes('phone') || lower.includes('sales')) {
+                    reply = "You can call Flux Rankers directly at (559) 220-9996 or email contact@fluxrankers.com!";
+                } else if (lower.includes('location') || lower.includes('where')) {
+                    reply = "We serve clients globally with our core team based in California, USA.";
+                }
+
+                const aiMsgDiv = document.createElement('div');
+                aiMsgDiv.className = 'flex items-start gap-2';
+                aiMsgDiv.innerHTML = `
+                    <div class="w-6 h-6 rounded-lg bg-purple-600 flex items-center justify-center text-white text-[10px] flex-shrink-0 mt-0.5">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-purple-950/80 p-3 rounded-2xl border border-purple-800/40 text-gray-200 max-w-[85%]">
+                        ${reply}
+                    </div>
+                `;
+                chatLog.appendChild(aiMsgDiv);
+                chatLog.scrollTop = chatLog.scrollHeight;
+            }, 600);
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&raw_gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
