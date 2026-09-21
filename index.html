@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flux Rankers | SEO, SEM &amp; Digital Marketing Agency</title>
+<meta name="description" content="Flux Rankers is a next-gen digital marketing agency helping brands rank higher, get more leads and grow with SEO, paid search, social media, content and web design.">
+<meta name="theme-color" content="#050510">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@400..700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ringG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient>
+  </defs>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22 22 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 12h6M9 16h4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.3 16.8 14 18.2 21 12 17.5 5.8 21 7.2 14 2 9.3 8.9 8.6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4zM22 2 11 13"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol>
+  <symbol id="i-vol-off" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></symbol>
+  <symbol id="i-vol-on" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4a4 4 0 1 1-7.9 1.2 4 4 0 0 1 7.9-1.2z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.8 4 12 4 12 4s-6.8 0-8.5.4a2.8 2.8 0 0 0-2 2C1 8.1 1 12 1 12s0 3.9.5 5.6a2.8 2.8 0 0 0 2 2C5.2 20 12 20 12 20s6.8 0 8.5-.4a2.8 2.8 0 0 0 2-2c.5-1.7.5-5.6.5-5.6s0-3.9-.5-5.6z"/><path d="m10 15 5-3-5-3z"/></symbol>
+</svg>
+
+<!-- ============ SPLASH SCREEN ============ -->
+<div class="splash" id="splash" aria-hidden="true">
+ <div class="splash-clip">
+  <div class="splash-stars"></div>
+  <div class="splash-inner">
+    <div class="orbit">
+      <span class="o-ring r1"></span><span class="o-ring r2"></span>
+      <span class="spin"><i></i></span><span class="spin s2"><i></i></span>
+      <div class="splash-tile"><svg class="ic"><use href="#i-rocket"/></svg></div>
+    </div>
+    <div class="splash-word">
+      <span style="--i:0">F</span><span style="--i:1">L</span><span style="--i:2">U</span><span style="--i:3">X</span><span class="gap" style="--i:4"></span><span class="cy" style="--i:5">R</span><span class="cy" style="--i:6">A</span><span class="cy" style="--i:7">N</span><span class="cy" style="--i:8">K</span><span class="cy" style="--i:9">E</span><span class="cy" style="--i:10">R</span><span class="cy" style="--i:11">S</span>
+    </div>
+    <p class="splash-tag">Propelling brands to orbit</p>
+    <div class="splash-bar"><i></i></div>
+  </div>
+ </div>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ambient background: gradient orbs + interactive particle network -->
+<div class="bg-fx" aria-hidden="true">
+  <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i>
+  <canvas id="bgCanvas"></canvas>
+</div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ============ ANNOUNCEMENT ============ -->
+<div class="announce" id="announce" role="note">
+  <div class="announce-inner">
+    <span class="announce-pill">LAUNCH SPECIAL</span>
+    <span>🚀 Get a <b>Free Digital Audit &amp; Custom ROI Proposal</b> for your brand today!</span>
+    <a href="#contact">Claim Audit →</a>
+  </div>
+  <button class="announce-close" id="announceClose" type="button" aria-label="Dismiss announcement"><svg class="ic"><use href="#i-close"/></svg></button>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="logo" href="#home" aria-label="Flux Rankers, home">
+      <span class="logo-tile"><svg class="ic"><use href="#i-rocket"/></svg></span>
+      <span class="logo-text"><b>FLUX <span>RANKERS</span></b><small>Propelling brands to orbit</small></span>
+    </a>
+
+    <nav class="nav" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="#home" class="is-active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="has-sub">
+          <a href="#services">Services</a>
+          <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Show services menu"><svg class="ic"><use href="#i-chev-d"/></svg></button>
+          <ul class="sub">
+            <li><a href="#services">Search Engine Optimization</a></li>
+            <li><a href="#services">Paid Search &amp; SEM</a></li>
+            <li><a href="#services">Social Media Marketing</a></li>
+            <li><a href="#services">Content Marketing</a></li>
+            <li><a href="#services">Web Design &amp; Development</a></li>
+            <li><a href="#services">Video &amp; Branding</a></li>
+          </ul>
+        </li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+        <li><a href="#faq">FAQs</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Toggle interface sounds">
+        <svg class="ic off"><use href="#i-vol-off"/></svg><svg class="ic on"><use href="#i-vol-on"/></svg>
+      </button>
+      <a class="btn btn-glow" href="#contact" data-magnetic>Get Proposal <svg class="ic"><use href="#i-bolt"/></svg></a>
+      <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="tag"><span class="dot"></span> Next-Gen Tech &amp; Digital Rankers</span>
+      <h1 id="hero-title">
+        <span class="line"><span class="lt">Marketing That Keeps</span></span>
+        <span class="line"><span class="lt">Your Brand <span class="grad-text">Orbiting</span></span></span>
+        <span class="line"><span class="lt"><span class="grad-text">Towards Success</span></span></span>
+      </h1>
+      <p class="lead">Flux Rankers engineers high-impact SEO, paid search, performance websites and immersive media designed to propel your brand far ahead of the competition.</p>
+
+      <div class="analyze">
+        <form id="proposalForm" novalidate>
+          <label class="input-wrap" for="heroSite">
+            <svg class="ic"><use href="#i-globe"/></svg>
+            <input id="heroSite" name="website" type="text" inputmode="url" placeholder="Enter your website domain (e.g. brand.com)" autocomplete="url">
+          </label>
+          <button class="btn btn-primary" type="submit" data-magnetic>Analyze Now <svg class="ic"><use href="#i-arrow-right"/></svg></button>
+        </form>
+        <p class="analyze-note"><svg class="ic"><use href="#i-shield"/></svg> Instant 20-second algorithm scan &amp; growth recommendations.</p>
+      </div>
+
+      <!-- Sample figures: replace with real numbers before launch -->
+      <ul class="hero-stats">
+        <li><strong data-count="99.8" data-decimals="1" data-suffix="%">99.8%</strong><span>Satisfaction Rate</span></li>
+        <li><strong data-count="500" data-suffix="+">500+</strong><span>Campaigns Launched</span></li>
+        <li><strong data-count="10" data-suffix="x">10x</strong><span>Average Growth</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <span class="chip chip-top"><i class="dot"></i> Rank #1 SEO Target</span>
+      <div class="dash" data-tilt="7">
+        <div class="dash-top"><span class="dots"><i></i><i></i><i></i></span><code>flux-rankers-v3.io</code></div>
+        <div class="dash-box">
+          <div class="dash-row"><span>Keyword Ranking Momentum</span><b class="ok">Ultra Fast (<span data-count="98">98</span>/100)</b></div>
+          <div class="meter"><i></i></div>
+        </div>
+        <div class="dash-2">
+          <div class="mini"><small>Core Web Vitals</small><b class="cy">Passed <svg class="ic"><use href="#i-check"/></svg></b></div>
+          <div class="mini"><small>Local SEO Score</small><b class="vi">Grade A+</b></div>
+        </div>
+        <div class="radar-box">
+          <div class="radar"><i></i><i></i><i></i></div>
+          <code>Live Rank Tracking Active</code>
+        </div>
+        <a class="dash-btn" href="#contact" tabindex="-1">View Sample Audit Report <svg class="ic"><use href="#i-external"/></svg></a>
+      </div>
+      <span class="chip chip-bottom"><svg class="ic"><use href="#i-trend"/></svg> +340% Traffic Spike</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS TICKER ============ -->
+<section class="results" aria-label="Client results">
+  <div class="container results-inner">
+    <span class="results-label">Real results</span>
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>Organic traffic up 142% in six months</span>
+        <span>Cost per lead cut by 38%</span>
+        <span>27 local keywords ranked #1</span>
+        <span>Flux Rankers doubled our online enquiries</span>
+        <span>Return on ad spend grew from 1.8x to 4.1x</span>
+        <span>Organic traffic up 142% in six months</span>
+        <span>Cost per lead cut by 38%</span>
+        <span>27 local keywords ranked #1</span>
+        <span>Flux Rankers doubled our online enquiries</span>
+        <span>Return on ad spend grew from 1.8x to 4.1x</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORMS ============ -->
+<section class="platforms" aria-label="Platforms we work with">
+  <div class="container platforms-inner">
+    <div><h3>Platforms We Work With</h3><p>The tools behind every campaign we run.</p></div>
+    <!-- Text wordmarks are placeholders. Only show partner logos you are officially certified for. -->
+    <div class="wordmarks"><span class="w1">Google Ads</span><span class="w2">Meta Ads</span><span class="w3">Semrush</span><span class="w4">HUBSPOT</span><span class="w5">Shopify</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container about-grid">
+
+    <div class="arch arch-a" aria-hidden="true" data-inview>
+      <div class="mini-card chart-card">
+        <div class="mc-top"><span>Organic clicks</span><b>4,820 <span>+64%</span></b></div>
+        <svg viewBox="0 0 220 90" role="img" aria-label="Rising line chart">
+          <defs>
+            <linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8B5CF6" stop-opacity=".45"/><stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/></linearGradient>
+            <linearGradient id="lineG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#22D3EE"/></linearGradient>
+          </defs>
+          <path class="area" d="M0 78 C30 74 45 60 70 58 S110 40 130 32 S190 14 220 6 L220 90 L0 90Z" fill="url(#areaG)"/>
+          <path class="draw" pathLength="1" d="M0 78 C30 74 45 60 70 58 S110 40 130 32 S190 14 220 6" fill="none" stroke="url(#lineG)" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="220" cy="6" r="5" fill="#22D3EE"/>
+        </svg>
+        <div class="foot"><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span></div>
+      </div>
+    </div>
+
+    <div class="about-copy">
+      <div class="badge-wrap" aria-hidden="true">
+        <span class="orbit-ring"></span>
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="badgeG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="1" stop-color="#0E7FB8"/></linearGradient>
+            <path id="badgePath" d="M100 100 m-72 0 a72 72 0 1 1 144 0 a72 72 0 1 1 -144 0"/>
+          </defs>
+          <circle cx="100" cy="100" r="98" fill="url(#badgeG)"/>
+          <text font-family="Outfit, sans-serif" font-size="13" font-weight="700" fill="#fff"><textPath href="#badgePath" textLength="446" lengthAdjust="spacing">FLUX RANKERS • RANK HIGHER • GROW FASTER •</textPath></text>
+        </svg>
+        <div class="badge-core"><svg class="ic" style="width:38px;height:38px"><use href="#i-rocket"/></svg></div>
+      </div>
+      <h2 id="about-title">Driving Business Growth with <span class="grad-text">Professional SEO and SEM</span></h2>
+      <p>At Flux Rankers, we build search and paid media programs around results you can measure. Our team of specialists improves your visibility, strengthens your brand and brings in customers who are already looking for what you sell. Every plan is shaped around your goals, your market and your budget, and every number is reported back to you in plain language.</p>
+      <ul class="check-list">
+        <li><svg class="ic"><use href="#i-check"/></svg> Keyword and competitor research before we spend a cent</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Technical SEO, content and link building under one roof</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Ad campaigns tracked to leads and sales, not just clicks</li>
+      </ul>
+      <a class="btn btn-primary" href="#why" data-magnetic>Learn More <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <div class="arch arch-b" aria-hidden="true">
+      <div class="mini-card">
+        <div class="mini-title">Top keywords</div>
+        <div class="kw-row"><span>local seo agency</span><em>#1 ▲ 6</em></div>
+        <div class="kw-row"><span>ppc management</span><em>#2 ▲ 9</em></div>
+        <div class="kw-row"><span>ecommerce marketing</span><em>#3 ▲ 14</em></div>
+        <div class="kw-row"><span>website audit</span><em>#1 ▲ 4</em></div>
+        <div class="kw-row"><span>brand video studio</span><em>#4 ▲ 11</em></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section section-alt" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Services</span>
+        <h2 id="services-title">Unlock Your Potential with <span class="grad-text">Our Services</span></h2>
+      </div>
+      <p>Everything you need to be found, trusted and chosen online. We keep our services focused on user experience, scalability and results that show up in your revenue.</p>
+    </div>
+
+    <div class="carousel" data-carousel>
+      <button class="carousel-btn prev" type="button" aria-label="Previous services"><svg class="ic"><use href="#i-chev-l"/></svg></button>
+      <div class="track" tabindex="0" aria-label="Services list">
+        <article class="service-card spot">
+          <div class="service-art art-1"><div class="glyph"><svg class="ic"><use href="#i-search"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Search Engine Optimization</h3><a class="circle-btn" href="#contact" aria-label="Ask about SEO"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Technical audits, keyword strategy and link building that move you up the results pages and keep you there.</p></div>
+        </article>
+        <article class="service-card spot">
+          <div class="service-art art-2"><div class="glyph"><svg class="ic"><use href="#i-target"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Paid Search &amp; SEM</h3><a class="circle-btn" href="#contact" aria-label="Ask about paid search"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Google and Bing campaigns built around your cost per lead, so your budget goes to buyers instead of browsers.</p></div>
+        </article>
+        <article class="service-card spot">
+          <div class="service-art art-3"><div class="glyph"><svg class="ic"><use href="#i-message"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Social Media Marketing</h3><a class="circle-btn" href="#contact" aria-label="Ask about social media"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Content, community management and paid social that turn followers into customers across every platform.</p></div>
+        </article>
+        <article class="service-card spot">
+          <div class="service-art art-4"><div class="glyph"><svg class="ic"><use href="#i-pen"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Content Marketing</h3><a class="circle-btn" href="#contact" aria-label="Ask about content marketing"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Blog posts, guides and email campaigns that answer what your buyers are searching for and build trust.</p></div>
+        </article>
+        <article class="service-card spot">
+          <div class="service-art art-5"><div class="glyph"><svg class="ic"><use href="#i-code"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Web Design &amp; Development</h3><a class="circle-btn" href="#contact" aria-label="Ask about web design"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Fast, mobile-first websites, online stores and landing pages designed to convert visitors into customers.</p></div>
+        </article>
+        <article class="service-card spot">
+          <div class="service-art art-6"><div class="glyph"><svg class="ic"><use href="#i-play"/></svg></div></div>
+          <div class="service-body"><div class="service-title"><h3>Video &amp; Branding</h3><a class="circle-btn" href="#contact" aria-label="Ask about video and branding"><svg class="ic"><use href="#i-arrow-right"/></svg></a></div>
+          <p>Brand identity, short-form video and animation that bring your story to life and make your message stick.</p></div>
+        </article>
+      </div>
+      <button class="carousel-btn next" type="button" aria-label="Next services"><svg class="ic"><use href="#i-chev-r"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="process-top">
+      <div>
+        <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Our Process</span>
+        <h2 id="process-title">A Clear Process for <span class="grad-text">Your Business</span></h2>
+      </div>
+      <div id="proposal">
+        <p>Four steps, no guesswork. Every stage has clear goals, a named owner and a report you can read without a dictionary.</p>
+        <div class="analyze" style="padding:.7rem">
+          <form data-proposal novalidate>
+            <label class="input-wrap" for="procSite"><svg class="ic"><use href="#i-globe"/></svg><input id="procSite" type="text" inputmode="url" placeholder="Enter your website domain"></label>
+            <button class="btn btn-primary" type="submit">Send Me a Proposal <svg class="ic"><use href="#i-arrow-right"/></svg></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <ol class="process-grid">
+      <li class="step spot"><span class="link" aria-hidden="true"></span><span class="step-ic"><svg class="ic"><use href="#i-clipboard"/></svg></span><h3>Discovery &amp; Strategy</h3><p>We audit your site and competitors, then set clear goals and a plan to reach them.</p></li>
+      <li class="step spot"><span class="link" aria-hidden="true"></span><span class="step-ic"><svg class="ic"><use href="#i-code"/></svg></span><h3>Build &amp; Launch</h3><p>Our specialists set up campaigns, content and technical fixes with precision.</p></li>
+      <li class="step spot"><span class="link" aria-hidden="true"></span><span class="step-ic"><svg class="ic"><use href="#i-search"/></svg></span><h3>Test &amp; Optimize</h3><p>We measure what works, cut what does not and improve results every week.</p></li>
+      <li class="step spot"><span class="link" aria-hidden="true"></span><span class="step-ic"><svg class="ic"><use href="#i-truck"/></svg></span><h3>Report &amp; Scale</h3><p>Monthly reports show your return, and we put more budget behind the winners.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section section-alt" id="why" aria-labelledby="why-title">
+  <div class="container why-grid">
+    <div class="why-copy">
+      <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Why Choose Us</span>
+      <h2 id="why-title">Excellence in Every Step: <span class="grad-text">Choose Us for Success</span></h2>
+      <p>Choose Flux Rankers for our expertise, tailored strategies and commitment to honest reporting. We combine proven search tactics with modern advertising technology to help your business grow in a competitive market.</p>
+
+      <!-- Sample figures: replace with your real numbers before launch -->
+      <div class="stat-panel" data-inview>
+        <h3>Numbers we are proud of, and report on every month</h3>
+        <div class="stats">
+          <div class="stat"><div class="ring" style="--p:.86"><svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36"/></svg><strong data-count="320" data-suffix="+">320+</strong></div><span>Campaigns launched</span></div>
+          <div class="stat"><div class="ring" style="--p:.68"><svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36"/></svg><strong data-count="3.4" data-decimals="1" data-suffix="x">3.4x</strong></div><span>Average return on ad spend</span></div>
+          <div class="stat"><div class="ring" style="--p:.92"><svg viewBox="0 0 84 84"><circle class="bg" cx="42" cy="42" r="36"/><circle class="fg" cx="42" cy="42" r="36"/></svg><strong data-count="92" data-suffix="%">92%</strong></div><span>Clients who stay with us</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mv-stack">
+      <article class="mv spot">
+        <small>Our Mission</small>
+        <h3>Helping Brands Get Found and Chosen</h3>
+        <p>Our goal is to help businesses flourish in the digital era. We deliver search, advertising and web solutions that increase visibility, generate qualified leads and create lasting growth.</p>
+        <a class="circle-btn" href="#contact" aria-label="Talk to us about our mission"><svg class="ic"><use href="#i-arrow-right"/></svg></a>
+      </article>
+      <article class="mv spot">
+        <small>Our Vision</small>
+        <h3>Shaping the Future of Growth Marketing</h3>
+        <p>We aim to become the most trusted growth partner for ambitious brands, offering strategic, scalable and transparent marketing that keeps businesses moving forward.</p>
+        <a class="circle-btn" href="#contact" aria-label="Talk to us about our vision"><svg class="ic"><use href="#i-arrow-right"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="testimonials" aria-labelledby="testi-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Testimonials</span>
+        <h2 id="testi-title">What Our <span class="grad-text">Clients Say</span></h2>
+      </div>
+      <p>Honest words from the teams we work with. Their results speak louder than any promise we could make.</p>
+    </div>
+
+    <div class="carousel" data-carousel data-autoplay="5200">
+      <button class="carousel-btn prev" type="button" aria-label="Previous reviews"><svg class="ic"><use href="#i-chev-l"/></svg></button>
+      <div class="track" tabindex="0" aria-label="Client reviews">
+        <figure class="review spot">
+          <div class="review-top"><span class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#3B82F6)">MT</span><div><b>Maya Thompson</b><small>Owner, Bloom &amp; Branch Florist</small></div></div>
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><span class="verified">Verified client</span></div>
+          <p>Within four months our Google Business Profile views doubled and the phone started ringing. The monthly reports make it easy to see where every lead came from.</p>
+        </figure>
+        <figure class="review spot">
+          <div class="review-top"><span class="avatar" style="background:linear-gradient(135deg,#06B6D4,#3B82F6)">DO</span><div><b>Daniel Ortiz</b><small>Founder, Ortiz Roofing</small></div></div>
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><span class="verified">Verified client</span></div>
+          <p>They rebuilt our website and our ad campaigns at the same time. Our cost per lead dropped by more than a third and the quality of enquiries is far better.</p>
+        </figure>
+        <figure class="review spot">
+          <div class="review-top"><span class="avatar" style="background:linear-gradient(135deg,#A855F7,#EC4899)">PN</span><div><b>Priya Nair</b><small>Marketing Lead, Kettle &amp; Co Foods</small></div></div>
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><span class="verified">Verified client</span></div>
+          <p>Finally an agency that explains things clearly. Our organic traffic is up 140% and I always know what the team is working on this week.</p>
+        </figure>
+        <figure class="review spot">
+          <div class="review-top"><span class="avatar" style="background:linear-gradient(135deg,#10B981,#06B6D4)">CB</span><div><b>Chris Bennett</b><small>Real estate agent</small></div></div>
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><span class="verified">Verified client</span></div>
+          <p>Local SEO was a mystery to me. Flux Rankers had me on the first page for my neighborhoods in a few months, and buyers now find me before they find the big brokers.</p>
+        </figure>
+        <figure class="review spot">
+          <div class="review-top"><span class="avatar" style="background:linear-gradient(135deg,#F59E0B,#EF4444)">HC</span><div><b>Hannah Cole</b><small>Owner, Pulse Fitness Studio</small></div></div>
+          <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><svg class="ic ic-fill"><use href="#i-star"/></svg><span class="verified">Verified client</span></div>
+          <p>Their short videos and social campaigns filled our new class schedule in three weeks. Friendly, fast and always a step ahead.</p>
+        </figure>
+      </div>
+      <button class="carousel-btn next" type="button" aria-label="Next reviews"><svg class="ic"><use href="#i-chev-r"/></svg></button>
+      <div class="carousel-dots" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="section section-alt" id="blogs" aria-labelledby="blog-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Blogs</span>
+        <h2 id="blog-title">Fresh Ideas from <span class="grad-text">the Flux Journal</span></h2>
+      </div>
+      <p>Practical marketing advice you can use this week, written by the people running the campaigns.</p>
+    </div>
+    <div class="blog-grid">
+      <a class="post spot" href="#blogs">
+        <div class="post-art pa-1"><span>Local SEO</span></div>
+        <div class="post-body"><h3>7 Local SEO Fixes You Can Make This Week</h3><p>Small changes to your Google Business Profile, citations and site pages that lift your local rankings.</p><div class="post-meta"><span>6 min read</span><svg class="ic"><use href="#i-arrow-right"/></svg></div></div>
+      </a>
+      <a class="post spot" href="#blogs">
+        <div class="post-art pa-2"><span>Strategy</span></div>
+        <div class="post-body"><h3>SEO vs SEM: Where Should Your First Dollar Go?</h3><p>A simple way to decide between organic growth and paid search based on your goals and timeline.</p><div class="post-meta"><span>5 min read</span><svg class="ic"><use href="#i-arrow-right"/></svg></div></div>
+      </a>
+      <a class="post spot" href="#blogs">
+        <div class="post-art pa-3"><span>Analytics</span></div>
+        <div class="post-body"><h3>How to Read Your Monthly Marketing Report</h3><p>The five numbers that matter, what they mean, and the questions to ask your agency every month.</p><div class="post-meta"><span>4 min read</span><svg class="ic"><use href="#i-arrow-right"/></svg></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="container faq-grid">
+    <div class="faq-copy">
+      <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> FAQs</span>
+      <h2 id="faq-title">Frequently Asked <span class="grad-text">Questions</span></h2>
+      <p>Straight answers about our services, process and support, so you can decide with confidence.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" id="fq1" aria-expanded="false" aria-controls="fa1">How do you build a strategy for my business? <svg class="ic"><use href="#i-chev-r"/></svg></button></h3>
+          <div class="faq-a" id="fa1" role="region" aria-labelledby="fq1"><div><p>We start with a discovery call and a full audit of your website, competitors and current results. From there we set goals, choose the channels that fit your budget and send you a written plan before any work begins.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" id="fq2" aria-expanded="false" aria-controls="fa2">How long does SEO take to show results? <svg class="ic"><use href="#i-chev-r"/></svg></button></h3>
+          <div class="faq-a" id="fa2" role="region" aria-labelledby="fq2"><div><p>Most clients see early movement in 8 to 12 weeks and stronger growth from month four onward. Paid search can bring leads in days, so we often combine both.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" id="fq3" aria-expanded="false" aria-controls="fa3">Do you work with small businesses and large brands? <svg class="ic"><use href="#i-chev-r"/></svg></button></h3>
+          <div class="faq-a" id="fa3" role="region" aria-labelledby="fq3"><div><p>Yes. Our packages scale from local shops and startups to multi-location and ecommerce brands. Each plan is tailored to your size, market and goals.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" id="fq4" aria-expanded="false" aria-controls="fa4">How often will I receive reports and updates? <svg class="ic"><use href="#i-chev-r"/></svg></button></h3>
+          <div class="faq-a" id="fa4" role="region" aria-labelledby="fq4"><div><p>You get a clear monthly report, a short weekly progress note and a review call each quarter. You can also message your account manager any time.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" id="fq5" aria-expanded="false" aria-controls="fa5">Can you share case studies or client success stories? <svg class="ic"><use href="#i-chev-r"/></svg></button></h3>
+          <div class="faq-a" id="fa5" role="region" aria-labelledby="fq5"><div><p>Absolutely. Tell us your industry on the consultation form and we will send relevant case studies with real numbers before your discovery call.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="faq-aside">
+      <div>
+        <div class="big-ic"><svg class="ic"><use href="#i-message"/></svg></div>
+        <h3>Still have a question?</h3>
+        <p>Book a free 20-minute call and we will walk you through what we would do for your business.</p>
+      </div>
+      <a class="btn btn-white" href="#contact" data-magnetic>Book a free call <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section" style="padding-top:0" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-band">
+      <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Ready for liftoff?</span>
+      <h2 id="cta-title">Let&rsquo;s put your brand in <span class="grad-text">orbit</span></h2>
+      <p>Get a free digital audit and a custom ROI proposal within 48 hours. No contracts, no pressure.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#contact" data-magnetic>Get My Free Audit <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+        <a class="btn btn-ghost" href="tel:+15550102030" data-magnetic><svg class="ic"><use href="#i-phone"/></svg> +1 (555) 010-2030</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT (blank demo form) ============ -->
+<section class="section section-alt" id="contact" aria-labelledby="contact-title" style="padding-top:60px">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <span class="tag"><svg class="ic"><use href="#i-rocket"/></svg> Contact Us</span>
+      <h2 id="contact-title">Partner with Us for <span class="grad-text">Comprehensive Marketing</span></h2>
+      <p>We are happy to answer any questions and help you decide which of our services best fit your needs.</p>
+      <p class="call-line">Call us at: <a href="tel:+15550102030">+1 (555) 010-2030</a></p>
+
+      <h3>Your benefits</h3>
+      <ul class="benefits">
+        <li><svg class="ic"><use href="#i-check"/></svg> Improved rankings</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Monthly reports</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Affordable packages</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Boosted engagement</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Tailored solutions</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Elevated branding</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Continued support</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Scalable growth</li>
+      </ul>
+
+      <h3>What happens next?</h3>
+      <ol class="next-steps">
+        <li><b>01</b>We schedule a call at your convenience</li>
+        <li><b>02</b>We hold a discovery and consulting meeting</li>
+        <li><b>03</b>We prepare and send you a proposal</li>
+      </ol>
+    </div>
+
+    <div class="form-card">
+      <h3>Schedule a Free Consultation</h3>
+      <form id="contactForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="fn">First Name</label><input id="fn" name="firstName" type="text" placeholder="First Name" autocomplete="given-name" required></div>
+          <div class="field"><label for="ln">Last Name</label><input id="ln" name="lastName" type="text" placeholder="Last Name" autocomplete="family-name" required></div>
+          <div class="field"><label for="ph">Phone Number</label><input id="ph" name="phone" type="tel" placeholder="Phone Number" autocomplete="tel"></div>
+          <div class="field"><label for="em">Email Address</label><input id="em" name="email" type="email" placeholder="Email Address" autocomplete="email" required></div>
+          <div class="field full"><label for="co">Company / Organization</label><input id="co" name="company" type="text" placeholder="Company / Organization" autocomplete="organization"></div>
+          <div class="field full"><label for="sv">How Can We Help You?</label>
+            <select id="sv" name="service" required>
+              <option value="" selected disabled>Select a service</option>
+              <option>Search Engine Optimization</option>
+              <option>Paid Search &amp; SEM</option>
+              <option>Social Media Marketing</option>
+              <option>Content Marketing</option>
+              <option>Web Design &amp; Development</option>
+              <option>Video &amp; Branding</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field full"><label for="ms">Message</label><textarea id="ms" name="message" placeholder="Message"></textarea></div>
+          <div class="field full">
+            <!-- Demo placeholder. Replace with real reCAPTCHA / hCaptcha when you go live. -->
+            <label class="captcha"><input type="checkbox" required> <span>I'm not a robot</span></label>
+          </div>
+          <div class="field full form-actions">
+            <button class="btn btn-primary" id="submitBtn" type="submit" data-magnetic><span class="spinner"></span><span class="btn-label">Book my free consultation</span> <svg class="ic"><use href="#i-send"/></svg></button>
+          </div>
+        </div>
+        <div class="form-status" id="formStatus" role="status" aria-live="polite"><svg class="ic"><use href="#i-check"/></svg><span>Thank you! This is a demo form, so nothing was sent. On the live site your message will go straight to our team.</span></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION (demo placeholder) ============ -->
+<section class="section" id="location" aria-labelledby="loc-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="tag"><svg class="ic"><use href="#i-pin"/></svg> Our Location</span>
+        <h2 id="loc-title">Visit Us or <span class="grad-text">Say Hello Online</span></h2>
+      </div>
+      <p>Drop by the office, call, or send us a note. We will get back to you within one business day.</p>
+    </div>
+
+    <div class="location-grid">
+      <div class="info-list">
+        <div class="info-card spot"><span class="icon-box"><svg class="ic"><use href="#i-pin"/></svg></span><div><h3>Office address</h3><p>Add your street address, city and postal code here.</p></div></div>
+        <div class="info-card spot"><span class="icon-box"><svg class="ic"><use href="#i-phone"/></svg></span><div><h3>Phone</h3><p><a href="tel:+15550102030">+1 (555) 010-2030</a></p></div></div>
+        <div class="info-card spot"><span class="icon-box"><svg class="ic"><use href="#i-mail"/></svg></span><div><h3>Email</h3><p><a href="mailto:hello@fluxrankers.com">hello@fluxrankers.com</a></p></div></div>
+        <div class="info-card spot"><span class="icon-box"><svg class="ic"><use href="#i-clock"/></svg></span><div><h3>Opening hours</h3><p>Add your working days and hours here.</p></div></div>
+      </div>
+
+      <div class="map-box">
+        <!-- TO SHOW A REAL MAP: open Google Maps > Share > Embed a map, copy the iframe and paste it below.
+             Then delete the .map-placeholder div. (The CSS already gives the map a dark look.)
+        <iframe src="PASTE_GOOGLE_MAPS_EMBED_URL_HERE" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Flux Rankers office location"></iframe>
+        -->
+        <div class="map-placeholder">
+          <div>
+            <div class="pin-wrap"><div class="pin"><svg class="ic"><use href="#i-pin"/></svg></div></div>
+            <strong>Map coming soon</strong>
+            <p>Your Google Map will appear here once the office address is added.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="#home" aria-label="Flux Rankers, back to top">
+          <span class="logo-tile"><svg class="ic"><use href="#i-rocket"/></svg></span>
+          <span class="logo-text"><b>FLUX <span>RANKERS</span></b><small>Propelling brands to orbit</small></span>
+        </a>
+        <p class="footer-about">A digital marketing agency helping businesses rank higher, reach more customers and grow with confidence.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#blogs">Blogs</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Search Engine Optimization</a></li>
+          <li><a href="#services">Paid Search &amp; SEM</a></li>
+          <li><a href="#services">Social Media Marketing</a></li>
+          <li><a href="#services">Content Marketing</a></li>
+          <li><a href="#services">Web Design</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+15550102030">+1 (555) 010-2030</a></li>
+          <li><a href="mailto:hello@fluxrankers.com">hello@fluxrankers.com</a></li>
+          <li><a href="#location">Find our office</a></li>
+          <li><a href="#contact">Free consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Flux Rankers. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING HELPERS ============ -->
+<div class="chat" id="chat">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with Flux Rankers">
+    <div class="chat-head"><b>Flux Rankers</b><button type="button" id="chatClose" aria-label="Close chat"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <div class="chat-body">
+      <div class="bubble">Hi there! How can we help you grow today?</div>
+      <a href="#contact">Book a free consultation <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+      <a href="#proposal">Get a free proposal <svg class="ic"><use href="#i-arrow-right"/></svg></a>
+      <a href="tel:+15550102030">Call +1 (555) 010-2030 <svg class="ic"><use href="#i-phone"/></svg></a>
+    </div>
+  </div>
+  <button class="chat-launch" type="button" id="chatOpen" aria-expanded="false" aria-controls="chatPanel" aria-label="Open chat"><svg class="ic"><use href="#i-message"/></svg><span class="badge"></span></button>
+</div>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg class="ic"><use href="#i-arrow-up"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
